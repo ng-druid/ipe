@@ -65,6 +65,9 @@ import { AlienaliasModule, AlienaliasSettings, ALIENALIAS_SETTINGS } from '@ng-d
 import { OutsiderModule } from '@ng-druid/outsider';
 import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 import { TractorbeamModule } from '@ng-druid/tractorbeam';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { RefineryModule } from '@ng-druid/refinery';
+import { SheathModule } from '@ng-druid/sheath';
 // import { PanelpageModule } from 'panelpage';
 
 // import { FlexLayoutServerModule } from '@angular/flex-layout/server';
@@ -195,7 +198,10 @@ export function markedOptionsFactory(): MarkedOptions {
     DruidFormsModule,
     // AlienaliasModule, // @todo: for now to avoid routing errors while working on ssr issues.
     OutsiderModule,
-    TractorbeamModule
+    TractorbeamModule,
+    RefineryModule,
+    SheathModule,
+    NgxDropzoneModule
     // JsonschemaModule
     // OktaAuthModule
   ],

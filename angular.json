@@ -210,7 +210,7 @@
           "builder": "@nguniversal/builders:prerender",
           "options": {
             "browserTarget": "ipe:build",
-            "serverTarget": "ipe:server:dev"
+            "serverTarget": "ipe:server"
           },
           "configurations": {
             "production": {}

@@ -22,7 +22,7 @@ import { ContextModule } from '@ng-druid/context';
 import { ContentModule } from '@ng-druid/content';
 import { AliasModule, CatchAllGuard, CatchAllRouterComponent } from '@ng-druid/alias';
 import { PagealiasModule } from '@ng-druid/pagealias';
-import { PanelsModule, PanelsSettings, PANELS_SETTINGS } from '@ng-druid/panels';
+import { PanelPage, PanelsModule, PanelsSettings, PANELS_SETTINGS } from '@ng-druid/panels';
 import { FormlyModule } from '@ng-druid/formly';
 import { BridgeModule } from '@ng-druid/bridge';
 import { StateModule } from '@ng-druid/state';
@@ -70,6 +70,8 @@ import { RefineryModule } from '@ng-druid/refinery';
 import { SheathModule } from '@ng-druid/sheath';
 // import { PanelpageModule } from 'panelpage';
 import { CloudwatchRumSettings, CLOUDWATCH_RUM_SETTINGS, initializeRumMonitorFactory } from '@ng-druid/awrum';
+import { panelpages } from '../environments/panelpages';
+import { createEditMatcher, createMatcher, EditPanelPageComponent, PagesModule, PanelPageRouterComponent } from '@ng-druid/pages';
 
 // import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 // import { MonacoEditorModule } from 'ngx-monaco-editor';
@@ -95,8 +97,10 @@ const routes = [
   } },*/
   // { path: '', children: [] /*, component: HomeComponent*/ },
   //{ path: '**', component: NotFoundComponent }
-  { path: '**', component: CatchAllRouterComponent, canActivate: [ CatchAllGuard ] }
+  // { path: '**', component: CatchAllRouterComponent, canActivate: [ CatchAllGuard ] }
   //{ path: '', redirectTo: 'pages', pathMatch: "full" }
+  ...panelpages.map(([id, path]) =>  ({ matcher: createEditMatcher(new PanelPage({ id, layoutType: '', displayType: '', gridItems: [], panels: [], layoutSetting: undefined, rowSettings: [], path })), component: EditPanelPageComponent, data: { panelPageListItem: new PanelPage({ id, layoutType: '', displayType: '', gridItems: [], panels: [], layoutSetting: undefined, rowSettings: [], path }) } })),
+  ...panelpages.map(([id, path]) =>  ({ matcher: createMatcher(new PanelPage({ id, layoutType: '', displayType: '', gridItems: [], panels: [], layoutSetting: undefined, rowSettings: [], path })), component: PanelPageRouterComponent, data: { panelPageListItem: new PanelPage({ id, layoutType: '', displayType: '', gridItems: [], panels: [], layoutSetting: undefined, rowSettings: [], path }) } }))
 ];
 
 // @todo: just get this to work for now deal with actual endpoints later.
@@ -189,7 +193,7 @@ export function markedOptionsFactory(): MarkedOptions {
     PanelsModule,
     // PanelpageModule,
     RenderModule,
-    PagealiasModule,
+    //PagealiasModule,
     FormlyModule,
     TransformModule,
     AwcogModule,
@@ -202,7 +206,8 @@ export function markedOptionsFactory(): MarkedOptions {
     TractorbeamModule,
     RefineryModule,
     SheathModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    PagesModule
     // JsonschemaModule
     // OktaAuthModule
   ],

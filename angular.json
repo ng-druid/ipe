@@ -46,7 +46,19 @@
             "optimization": false,
             "namedChunks": true,
             "extraWebpackConfig": "projects/ipe/webpack.config.js",
-            "commonChunk": false
+            "commonChunk": false,
+            "allowedCommonJsDependencies": [
+              "jsonpath-plus",
+              "qs",
+              "@aws-crypto/crc32c",
+              "stream",
+              "buffer",
+              "@aws-crypto/sha256-browser",
+              "entities",
+              "fast-xml-parser",
+              "@aws-crypto/sha1-browser",
+              "@aws-crypto/crc32"
+            ]
           },
           "configurations": {
             "production": {
@@ -54,25 +66,6 @@
                 {
                   "replace": "projects/ipe/src/environments/environment.ts",
                   "with": "projects/ipe/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
                 }
               ],
               "extraWebpackConfig": "projects/ipe/webpack.prod.config.js"
@@ -138,8 +131,7 @@
             "main": "projects/ipe/src/main.server.ts",
             "tsConfig": "projects/ipe/tsconfig.server.json",
             "sourceMap": true,
-            "optimization": false,
-            "verbose": true
+            "optimization": false
           },
           "configurations": {
             "production": {
@@ -151,7 +143,7 @@
                   "with": "projects/ipe/src/environments/environment.prod.ts"
                 }
               ],
-              "sourceMap": false,
+              "sourceMap": true,
               "optimization": true
             },
             "dev": {
@@ -163,7 +155,7 @@
                   "with": "projects/ipe/src/environments/environment.dev.ts"
                 }
               ],
-              "sourceMap": false,
+              "sourceMap": true,
               "optimization": true
             },
             "dev.local": {
@@ -210,11 +202,18 @@
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "browserTarget": "ipe:build",
-            "serverTarget": "ipe:server"
+            "serverTarget": "ipe:server:dev",
+            "browserTarget": "ipe:build:dev"
           },
           "configurations": {
-            "production": {}
+            "production": {
+              "serverTarget": "ipe:server:production",
+              "browserTarget": "ipe:build:production"
+            },
+            "dev": {
+              "serverTarget": "ipe:server:dev",
+              "browserTarget": "ipe:build:dev"
+            }
           }
         }
       }

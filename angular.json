@@ -62,6 +62,13 @@
           },
           "configurations": {
             "production": {
+              "outputHashing": "all",
+              "vendorChunk": false,
+              "extractLicenses": true,
+              "buildOptimizer": true,
+              "namedChunks": false,
+              "commonChunk": true,
+              "optimization": true,
               "fileReplacements": [
                 {
                   "replace": "projects/ipe/src/environments/environment.ts",
@@ -127,7 +134,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/ipe/server",
+            "outputPath": "dist/ipe-server",
             "main": "projects/ipe/src/main.server.ts",
             "tsConfig": "projects/ipe/tsconfig.server.json",
             "sourceMap": true,
@@ -135,7 +142,6 @@
           },
           "configurations": {
             "production": {
-              "outputHashing": "media",
               "bundleDependencies": true,
               "fileReplacements": [
                 {
@@ -156,7 +162,7 @@
                 }
               ],
               "sourceMap": true,
-              "optimization": true
+              "optimization": false
             },
             "dev.local": {
               "outputHashing": "media",

@@ -1,5 +1,5 @@
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler, APP_INITIALIZER,  SecurityContext } from '@angular/core';
+import { NgModule, ErrorHandler, APP_INITIALIZER,  SecurityContext, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientJsonpModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -10,24 +10,24 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 // tslint:disable-next-line:nx-enforce-module-boundaries
 // import { AD_SETTINGS, AdSettings } from '@classifieds-ui/ads';
 // Base auth
-import { AuthModule, LogoutInterceptor} from '@ng-druid/auth';
+import { AuthModule, LogoutInterceptor} from '@rollthecloudinc/auth';
 // Auth implementation - open connect/oauth
-import { OidcModule, TokenInterceptor, CLIENT_SETTINGS, ClientSettings } from '@ng-druid/oidc';
-import { MediaModule, MediaSettings, MEDIA_SETTINGS } from '@ng-druid/media';
-import { UtilsModule /*, CorrelationInterceptor */, SITE_NAME, HOST_NAME, PROTOCOL } from '@ng-druid/utils';
-import { MaterialModule } from '@ng-druid/material';
+import { OidcModule, TokenInterceptor, CLIENT_SETTINGS, ClientSettings } from '@rollthecloudinc/oidc';
+import { MediaModule, MediaSettings, MEDIA_SETTINGS } from '@rollthecloudinc/media';
+import { UtilsModule /*, CorrelationInterceptor */, SITE_NAME, HOST_NAME, PROTOCOL } from '@rollthecloudinc/utils';
+import { MaterialModule } from '@rollthecloudinc/material';
 // import { LOGGING_SETTINGS, LoggingSettings, LoggingModule, HttpErrorInterceptor, GlobalErrorHandler } from '@classifieds-ui/logging';
-import { TokenModule } from '@ng-druid/token';
-import { ContextModule } from '@ng-druid/context';
-import { ContentModule } from '@ng-druid/content';
-import { AliasModule, CatchAllGuard, CatchAllRouterComponent } from '@ng-druid/alias';
-import { PagealiasModule } from '@ng-druid/pagealias';
-import { PanelPage, PanelsModule, PanelsSettings, PANELS_SETTINGS } from '@ng-druid/panels';
-import { FormlyModule } from '@ng-druid/formly';
-import { BridgeModule } from '@ng-druid/bridge';
-import { StateModule } from '@ng-druid/state';
-import { AwcogModule, CognitoSettings, COGNITO_SETTINGS } from '@ng-druid/awcog';
-import { KeyvalModule } from '@ng-druid/keyval';
+import { TokenModule } from '@rollthecloudinc/token';
+import { ContextModule } from '@rollthecloudinc/context';
+import { ContentModule } from '@rollthecloudinc/content';
+import { AliasModule, CatchAllGuard, CatchAllRouterComponent } from '@rollthecloudinc/alias';
+import { PagealiasModule } from '@rollthecloudinc/pagealias';
+import { PanelPage, PanelsModule, PanelsSettings, PANELS_SETTINGS } from '@rollthecloudinc/panels';
+import { FormlyModule } from '@rollthecloudinc/formly';
+import { BridgeModule } from '@rollthecloudinc/bridge';
+import { StateModule } from '@rollthecloudinc/state';
+import { AwcogModule, CognitoSettings, COGNITO_SETTINGS } from '@rollthecloudinc/awcog';
+import { KeyvalModule } from '@rollthecloudinc/keyval';
 // import { CHAT_SETTINGS, ChatSettings } from '@classifieds-ui/chat';
 // tslint:disable-next-line:nx-enforce-module-boundaries
 // import { PROFILE_SETTINGS, ProfileSettings } from '@classifieds-ui/profiles';
@@ -53,25 +53,25 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';*/
 import { EntityDataModule, DefaultDataServiceConfig } from '@ngrx/data';
 import { reducers, metaReducers } from './reducers';
-import { AuthCallbackComponent } from '@ng-druid/auth';
-import { TransformModule } from '@ng-druid/transform';
-import { DeityModule } from '@ng-druid/deity';
-import { LoopModule } from '@ng-druid/loop';
-import { RenderModule } from '@ng-druid/render';
-import { FormsModule as DruidFormsModule } from '@ng-druid/forms';
+import { AuthCallbackComponent } from '@rollthecloudinc/auth';
+import { TransformModule } from '@rollthecloudinc/transform';
+import { DeityModule } from '@rollthecloudinc/deity';
+import { LoopModule } from '@rollthecloudinc/loop';
+import { RenderModule } from '@rollthecloudinc/render';
+import { FormsModule as DruidFormsModule } from '@rollthecloudinc/forms';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { AlienaliasModule, AlienaliasSettings, ALIENALIAS_SETTINGS } from '@ng-druid/alienalias';
-import { OutsiderModule } from '@ng-druid/outsider';
+import { AlienaliasModule, AlienaliasSettings, ALIENALIAS_SETTINGS } from '@rollthecloudinc/alienalias';
+import { OutsiderModule } from '@rollthecloudinc/outsider';
 import { FlexLayoutServerModule } from '@angular/flex-layout/server';
-import { TractorbeamModule } from '@ng-druid/tractorbeam';
+import { TractorbeamModule } from '@rollthecloudinc/tractorbeam';
 import { NgxDropzoneModule } from 'ngx-dropzone';
-import { RefineryModule } from '@ng-druid/refinery';
-import { SheathModule } from '@ng-druid/sheath';
+import { RefineryModule } from '@rollthecloudinc/refinery';
+import { SheathModule } from '@rollthecloudinc/sheath';
 // import { PanelpageModule } from 'panelpage';
-import { CloudwatchRumSettings, CLOUDWATCH_RUM_SETTINGS, initializeRumMonitorFactory } from '@ng-druid/awrum';
+import { CloudwatchRumSettings, CLOUDWATCH_RUM_SETTINGS, initializeRumMonitorFactory } from '@rollthecloudinc/awrum';
 import { panelpages } from '../environments/panelpages';
-import { createEditMatcher, createMatcher, EditPanelPageComponent, PagesModule, PanelPageRouterComponent } from '@ng-druid/pages';
+import { createEditMatcher, createMatcher, EditPanelPageComponent, PagesModule, PanelPageRouterComponent } from '@rollthecloudinc/pages';
 
 // import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 // import { MonacoEditorModule } from 'ngx-monaco-editor';
@@ -156,10 +156,10 @@ export function markedOptionsFactory(): MarkedOptions {
     }),
     // NbA11yModule.forRoot(),
     RouterModule.forRoot(routes, { initialNavigation: 'enabled', relativeLinkResolution: 'legacy' }),
-    StoreDevtoolsModule.instrument({
+    !environment.production ? StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
-    }),
+    }) : [],
     StoreRouterConnectingModule.forRoot({
       serializer: MinimalRouterStateSerializer
     }),
@@ -174,7 +174,6 @@ export function markedOptionsFactory(): MarkedOptions {
       }
     ),
     EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
     BridgeModule,
     StateModule,
     MaterialModule,
@@ -241,7 +240,7 @@ export function markedOptionsFactory(): MarkedOptions {
 
     { provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig },
 
-    { provide: APP_INITIALIZER, useFactory: initializeRumMonitorFactory, multi: true, deps: [ CLOUDWATCH_RUM_SETTINGS ] },
+    { provide: APP_INITIALIZER, useFactory: initializeRumMonitorFactory, multi: true, deps: [ CLOUDWATCH_RUM_SETTINGS, NgZone ] },
 
         /* These are required only for pre-rendering - quick hack to make work for now */
     //{ provide: APP_BASE_HREF, useValue: 'http://localhost:4000/' },

@@ -29,10 +29,10 @@ module.exports = {
         library: { type: "module" },
 
         // For remotes (please adjust)
-        // name: "ipe",
+        // name: "spear",
         // filename: "remoteEntry.js",
         // exposes: {
-        //     './Component': './projects/ipe/src/app/app.component.ts',
+        //     './Component': './projects/spear/src/app/app.component.ts',
         // },        
         
         // For hosts (please adjust)

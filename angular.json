@@ -2,34 +2,34 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "defaultProject": "ipe",
+  "defaultProject": "spear",
   "projects": {
-    "ipe": {
+    "spear": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/ipe",
-      "sourceRoot": "projects/ipe/src",
+      "root": "projects/spear",
+      "sourceRoot": "projects/spear/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "ngx-build-plus:browser",
           "options": {
-            "outputPath": "dist/ipe",
-            "index": "projects/ipe/src/index.html",
-            "main": "projects/ipe/src/main.ts",
-            "polyfills": "projects/ipe/src/polyfills.ts",
-            "tsConfig": "projects/ipe/tsconfig.app.json",
+            "outputPath": "dist/spear",
+            "index": "projects/spear/src/index.html",
+            "main": "projects/spear/src/main.ts",
+            "polyfills": "projects/spear/src/polyfills.ts",
+            "tsConfig": "projects/spear/tsconfig.app.json",
             "assets": [
-              "projects/ipe/src/favicon.ico",
-              "projects/ipe/src/assets"
+              "projects/spear/src/favicon.ico",
+              "projects/spear/src/assets"
             ],
             "styles": [
-              "projects/ipe/src/styles.scss",
-              "projects/ipe/src/theme.scss",
+              "projects/spear/src/styles.scss",
+              "projects/spear/src/theme.scss",
               "node_modules/prismjs/themes/prism-okaidia.css"
             ],
             "scripts": [
@@ -45,23 +45,11 @@
             "sourceMap": true,
             "optimization": false,
             "namedChunks": true,
-            "extraWebpackConfig": "projects/ipe/webpack.config.js",
-            "commonChunk": false,
-            "allowedCommonJsDependencies": [
-              "jsonpath-plus",
-              "qs",
-              "@aws-crypto/crc32c",
-              "stream",
-              "buffer",
-              "@aws-crypto/sha256-browser",
-              "entities",
-              "fast-xml-parser",
-              "@aws-crypto/sha1-browser",
-              "@aws-crypto/crc32"
-            ]
+            "extraWebpackConfig": "projects/spear/webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
-            "production": {
+            "dev": {
               "outputHashing": "all",
               "vendorChunk": false,
               "extractLicenses": true,
@@ -71,11 +59,26 @@
               "optimization": true,
               "fileReplacements": [
                 {
-                  "replace": "projects/ipe/src/environments/environment.ts",
-                  "with": "projects/ipe/src/environments/environment.prod.ts"
+                  "replace": "projects/spear/src/environments/environment.ts",
+                  "with": "projects/spear/src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "prod": {
+              "outputHashing": "all",
+              "vendorChunk": false,
+              "extractLicenses": true,
+              "buildOptimizer": true,
+              "namedChunks": false,
+              "commonChunk": true,
+              "optimization": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/spear/src/environments/environment.ts",
+                  "with": "projects/spear/src/environments/environment.prod.ts"
                 }
               ],
-              "extraWebpackConfig": "projects/ipe/webpack.prod.config.js"
+              "extraWebpackConfig": "projects/spear/webpack.prod.config.js"
             }
           },
           "defaultConfiguration": ""
@@ -83,38 +86,38 @@
         "serve": {
           "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "ipe:build",
+            "browserTarget": "spear:build",
             "port": 4000,
             "publicHost": "http://localhost:4000",
-            "extraWebpackConfig": "projects/ipe/webpack.config.js"
+            "extraWebpackConfig": "projects/spear/webpack.config.js"
           },
           "configurations": {
-            "production": {
-              "browserTarget": "ipe:build:production",
-              "extraWebpackConfig": "projects/ipe/webpack.prod.config.js"
+            "prod": {
+              "browserTarget": "spear:build:prod",
+              "extraWebpackConfig": "projects/spear/webpack.prod.config.js"
             }
           }
         },
         "extract-i18n": {
           "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "browserTarget": "ipe:build",
-            "extraWebpackConfig": "projects/ipe/webpack.config.js"
+            "browserTarget": "spear:build",
+            "extraWebpackConfig": "projects/spear/webpack.config.js"
           }
         },
         "test": {
           "builder": "ngx-build-plus:karma",
           "options": {
-            "main": "projects/ipe/src/test.ts",
-            "polyfills": "projects/ipe/src/polyfills.ts",
-            "tsConfig": "projects/ipe/tsconfig.spec.json",
-            "karmaConfig": "projects/ipe/karma.conf.js",
+            "main": "projects/spear/src/test.ts",
+            "polyfills": "projects/spear/src/polyfills.ts",
+            "tsConfig": "projects/spear/tsconfig.spec.json",
+            "karmaConfig": "projects/spear/karma.conf.js",
             "assets": [
-              "projects/ipe/src/favicon.ico",
-              "projects/ipe/src/assets"
+              "projects/spear/src/favicon.ico",
+              "projects/spear/src/assets"
             ],
             "styles": [
-              "projects/ipe/src/styles.scss"
+              "projects/spear/src/styles.scss"
             ],
             "scripts": []
           }
@@ -122,58 +125,49 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/ipe/e2e/protractor.conf.js",
-            "devServerTarget": "ipe:serve"
+            "protractorConfig": "projects/spear/e2e/protractor.conf.js",
+            "devServerTarget": "spear:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "ipe:serve:production"
+            "dev": {
+              "devServerTarget": "spear:serve:dev"
+            },
+            "prod": {
+              "devServerTarget": "spear:serve:prod"
             }
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/ipe-server",
-            "main": "projects/ipe/src/main.server.ts",
-            "tsConfig": "projects/ipe/tsconfig.server.json",
+            "outputPath": "dist/spear-server",
+            "main": "projects/spear/src/main.server.ts",
+            "tsConfig": "projects/spear/tsconfig.server.json",
             "sourceMap": true,
-            "optimization": false
+            "optimization": false,
+            "verbose": true
           },
           "configurations": {
-            "production": {
+            "prod": {
               "bundleDependencies": true,
               "fileReplacements": [
                 {
-                  "replace": "projects/ipe/src/environments/environment.ts",
-                  "with": "projects/ipe/src/environments/environment.prod.ts"
+                  "replace": "projects/spear/src/environments/environment.ts",
+                  "with": "projects/spear/src/environments/environment.prod.ts"
                 }
               ],
               "sourceMap": true,
               "optimization": true
             },
             "dev": {
-              "outputHashing": "media",
               "bundleDependencies": true,
               "fileReplacements": [
                 {
-                  "replace": "projects/ipe/src/environments/environment.ts",
-                  "with": "projects/ipe/src/environments/environment.dev.ts"
+                  "replace": "projects/spear/src/environments/environment.ts",
+                  "with": "projects/spear/src/environments/environment.dev.ts"
                 }
               ],
               "sourceMap": true,
-              "optimization": false
-            },
-            "dev.local": {
-              "outputHashing": "media",
-              "bundleDependencies": true,
-              "fileReplacements": [
-                {
-                  "replace": "projects/ipe/src/environments/environment.ts",
-                  "with": "projects/ipe/src/environments/environment.dev.local.ts"
-                }
-              ],
-              "sourceMap": false,
               "optimization": true
             }
           },
@@ -183,22 +177,32 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "optimization": false,
-            "outputPath": "dist/ipe/lambda",
-            "main": "projects/ipe/src/main.lambda.ts",
-            "tsConfig": "projects/ipe/tsconfig.lambda.json",
+            "outputPath": "dist/spear/lambda",
+            "main": "projects/spear/src/main.lambda.ts",
+            "tsConfig": "projects/spear/tsconfig.lambda.json",
             "externalDependencies": [
               "../server/main"
             ],
             "sourceMap": true
           },
           "configurations": {
+            "prod": {
+              "optimization": true,
+              "extractLicenses": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/spear/src/environments/environment.ts",
+                  "with": "projects/spear/src/environments/environment.prod.ts"
+                }
+              ]
+            },
             "dev": {
               "optimization": true,
               "extractLicenses": true,
               "fileReplacements": [
                 {
-                  "replace": "projects/ipe/src/environments/environment.ts",
-                  "with": "projects/ipe/src/environments/environment.dev.ts"
+                  "replace": "projects/spear/src/environments/environment.ts",
+                  "with": "projects/spear/src/environments/environment.dev.ts"
                 }
               ]
             }
@@ -208,17 +212,17 @@
         "prerender": {
           "builder": "@nguniversal/builders:prerender",
           "options": {
-            "serverTarget": "ipe:server:dev",
-            "browserTarget": "ipe:build:dev"
+            "browserTarget": "spear:build",
+            "serverTarget": "spear:server"
           },
           "configurations": {
-            "production": {
-              "serverTarget": "ipe:server:production",
-              "browserTarget": "ipe:build:production"
-            },
             "dev": {
-              "serverTarget": "ipe:server:dev",
-              "browserTarget": "ipe:build:dev"
+              "browserTarget": "spear:build:dev",
+              "serverTarget": "spear:server:dev"
+            },
+            "prod": {
+              "browserTarget": "spear:build:prod",
+              "serverTarget": "spear:server:prod"
             }
           }
         }

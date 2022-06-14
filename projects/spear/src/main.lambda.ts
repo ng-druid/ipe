@@ -9,7 +9,7 @@ import 'media-typer';
 import 'mime-types';
 import 'mime-db';
 
-// const { ngExpressEngine, AppServerModule, enableProdMode } = require('../../../dist/ipe/server/main');
+// const { ngExpressEngine, AppServerModule, enableProdMode } = require('../../../dist/spear/server/main');
 const { ngExpressEngine, AppServerModule, enableProdMode, HOST_NAME, PROTOCOL } = require('../server/main');
 import { APP_BASE_HREF } from '@angular/common';
 //const winston  = require('winston');
@@ -70,7 +70,7 @@ const binaryMimeTypes = [
 export function app() {
   enableProdMode();
   const server = express();
-  const distFolder = 'dist/ipe';
+  const distFolder = 'dist/spear';
   const indexHtml = 'index';
 
   server.use(cookieParser());

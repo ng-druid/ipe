@@ -29,7 +29,7 @@ export const environment = {
   production: false,
   site: 'ipe',
   apiGatewaySettings: {
-    // endpointUrl: 'https://localhost:44340',
+    // endpointUrl: 'https://localhost:443x40',
     endpointUrl: "https://80ry0dd5s4.execute-api.us-east-1.amazonaws.com"
   },
   mediaSettings: {

@@ -25,7 +25,8 @@
             "tsConfig": "projects/spear/tsconfig.app.json",
             "assets": [
               "projects/spear/src/favicon.ico",
-              "projects/spear/src/assets"
+              "projects/spear/src/assets",
+              "projects/spear/src/staticwebapp.config.json"
             ],
             "styles": [
               "projects/spear/src/styles.scss",

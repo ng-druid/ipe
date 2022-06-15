@@ -31,6 +31,6 @@ jobs:
         uses: cpina/github-action-push-to-another-repository@main
         with:
           source-directory: 'dist/spear'
-          destination-repository-username: 'rollthecloudinc'
+          destination-github-username: 'rollthecloudinc'
           destination-repository-name: 'ipe-build'
           target-branch: master

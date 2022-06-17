@@ -29,7 +29,6 @@ export const environment = {
   production: false,
   site: 'ipe',
   apiGatewaySettings: {
-    // endpointUrl: 'https://localhost:443x40',
     endpointUrl: "https://80ry0dd5s4.execute-api.us-east-1.amazonaws.com"
   },
   mediaSettings: {
@@ -54,7 +53,6 @@ export const environment = {
   },
   chatSettings: {
     // endpointUrl: "https://localhost:44340/chat"
-    // endpointUrl: "http://classifieds-chat-dev-2064029101.us-east-1.elb.amazonaws.com"
     endpointUrl: "wss://61rdyvvayj.execute-api.us-east-1.amazonaws.com/dev"
   },
   oktaSettings: {

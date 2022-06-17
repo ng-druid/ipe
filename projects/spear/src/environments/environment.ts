@@ -52,7 +52,6 @@ export const environment = {
     endpointUrl: "https://localhost:44340/logging"
   },
   chatSettings: {
-    // endpointUrl: "https://localhost:44340/chat"
     endpointUrl: "wss://61rdyvvayj.execute-api.us-east-1.amazonaws.com/dev"
   },
   oktaSettings: {

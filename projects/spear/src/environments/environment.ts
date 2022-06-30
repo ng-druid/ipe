@@ -29,10 +29,10 @@ export const environment = {
   production: false,
   site: 'ipe',
   apiGatewaySettings: {
-    endpointUrl: "https://80ry0dd5s4.execute-api.us-east-1.amazonaws.com"
+    endpointUrl: "https://81j44yaaab.execute-api.us-east-1.amazonaws.com"
   },
   mediaSettings: {
-    endpointUrl: 'https://80ry0dd5s4.execute-api.us-east-1.amazonaws.com/media',
+    endpointUrl: 'https://81j44yaaab.execute-api.us-east-1.amazonaws.com/media',
     cloudinaryUrl: 'https://api.cloudinary.com/v1_1/dj4vvkgzw',
     uploadPreset: 'i0hm4opm',
     imageUrl: 'https://d12b7acm1cy55s.cloudfront.net',
@@ -65,7 +65,8 @@ export const environment = {
   },
   panelsSettings: {
     openSearchDomain: 'search-classifieds-ui-dev-eldczuhq3vesgpjnr3vie6cagq',
-    s3Bucket: 'classifieds-ui-dev'
+    s3Bucket: 'classifieds-ui-dev',
+    objectsRootUrl: 'https://rollthecloudinc.github.io/ipe-objects'
   },
   alienaliasSettings: {
     openSearchDomain: 'search-classifieds-ui-dev-eldczuhq3vesgpjnr3vie6cagq'

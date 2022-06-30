@@ -64,7 +64,8 @@ export const environment = {
   },
   panelsSettings: {
     openSearchDomain: 'search-classifieds-ui-prod-o5unofrr3c4qb3ykfrxebh2e4a',
-    s3Bucket: 'classifieds-ui-prod'
+    s3Bucket: 'classifieds-ui-prod',
+    objectsRootUrl: '/assets/objects'
   },
   alienaliasSettings: {
     openSearchDomain: 'search-classifieds-ui-prod-o5unofrr3c4qb3ykfrxebh2e4a'

@@ -116,7 +116,7 @@ export const environment = {
   }
 };
 
-const x = 'xxxxxxxxxxxsxxx';
+const x = 'xxxxxxxxxxsxxx';
 
 /*
  * For easier debugging in development mode, you can import the following file

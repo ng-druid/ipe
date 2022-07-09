@@ -1,1 +1,1 @@
-export const panelpages = []
+export const panelpages = [];

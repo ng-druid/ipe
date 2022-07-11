@@ -65,7 +65,7 @@ export const environment = {
   panelsSettings: {
     openSearchDomain: 'search-classifieds-ui-prod-o5unofrr3c4qb3ykfrxebh2e4a',
     s3Bucket: 'classifieds-ui-prod',
-    objectsRootUrl: '/assets/objects'
+    objectsRootUrl: 'https://rollthecloudinc.github.io/ipe-objects-prod'
   },
   alienaliasSettings: {
     openSearchDomain: 'search-classifieds-ui-prod-o5unofrr3c4qb3ykfrxebh2e4a'
@@ -80,9 +80,9 @@ export const environment = {
     authority: 'https://classifieds-ui-prod.auth.us-east-1.amazoncognito.com',
     client_id: '37lke0kuqac07fs1mk9mp2h471',
     // redirect_uri: 'http://localhost:4000/auth-callback',
-    redirect_uri: 'https://demo.ng-druid.com/auth-callback',
-    // redirect_uri: 'https://uhf0kayrs4.execute-api.us-east-1.amazonaws.com/auth-callback',
     //redirect_uri: 'https://demo.ng-druid.com/auth-callback',
+    // redirect_uri: 'https://uhf0kayrs4.execute-api.us-east-1.amazonaws.com/auth-callback',
+    redirect_uri: 'https://demo.ng-druid.com/auth-callback',
     // silent_redirect_uri: 'https://ng-druid.com/silent-refresh.html',
     // silent_redirect_uri: 'https://uhf0kayrs4.execute-api.us-east-1.amazonaws.com/silent-refresh.html',
     silent_redirect_uri: 'https://demo.ng-druid.com/silent-refresh.html',

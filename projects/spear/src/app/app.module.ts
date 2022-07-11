@@ -1,5 +1,5 @@
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler, APP_INITIALIZER,  SecurityContext, NgZone } from '@angular/core';
+import { NgModule, ErrorHandler, APP_INITIALIZER,  SecurityContext, NgZone, PLATFORM_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClientJsonpModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -27,7 +27,7 @@ import { FormlyModule } from '@rollthecloudinc/formly';
 import { BridgeModule } from '@rollthecloudinc/bridge';
 import { StateModule } from '@rollthecloudinc/state';
 import { AwcogModule, CognitoSettings, COGNITO_SETTINGS } from '@rollthecloudinc/awcog';
-import { KeyvalModule } from '@rollthecloudinc/keyval';
+import { initializeIdbDataFactory, KeyvalModule } from '@rollthecloudinc/keyval';
 // import { CHAT_SETTINGS, ChatSettings } from '@classifieds-ui/chat';
 // tslint:disable-next-line:nx-enforce-module-boundaries
 // import { PROFILE_SETTINGS, ProfileSettings } from '@classifieds-ui/profiles';
@@ -72,6 +72,7 @@ import { SheathModule } from '@rollthecloudinc/sheath';
 import { CloudwatchRumSettings, CLOUDWATCH_RUM_SETTINGS, initializeRumMonitorFactory } from '@rollthecloudinc/awrum';
 import { panelpages } from '../environments/panelpages';
 import { createEditMatcher, createMatcher, EditPanelPageComponent, PagesModule, PanelPageRouterComponent } from '@rollthecloudinc/pages';
+import { panelpages as panelpages2 } from '../data/panelpages';
 
 // import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 // import { MonacoEditorModule } from 'ngx-monaco-editor';
@@ -241,6 +242,7 @@ export function markedOptionsFactory(): MarkedOptions {
     { provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig },
 
     // { provide: APP_INITIALIZER, useFactory: initializeRumMonitorFactory, multi: true, deps: [ CLOUDWATCH_RUM_SETTINGS, NgZone ] },
+    { provide: APP_INITIALIZER, useFactory: initializeIdbDataFactory({ key: ({ data }) => 'panelpage__' + data.id, data: panelpages2.map(p => new PanelPage(p as any)) }), multi: true, deps: [ PLATFORM_ID ] },
 
         /* These are required only for pre-rendering - quick hack to make work for now */
     //{ provide: APP_BASE_HREF, useValue: 'http://localhost:4000/' },

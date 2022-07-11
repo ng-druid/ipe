@@ -94,12 +94,14 @@ export const environment = {
   clientSettings: {
     authority: 'https://classifieds-ui-dev.auth.us-east-1.amazoncognito.com',
     client_id: '3lkidn79q4jq8nahkecsguleij',
+    redirect_uri: 'https://demo.druidcloud.dev/auth-callback',
     // redirect_uri: 'https://dfrmx7er5ggc0.cloudfront.net/auth-callback',
-    redirect_uri: 'http://localhost:4000/auth-callback',
+    // redirect_uri: 'http://localhost:4000/auth-callback',
     // redirect_uri: 'https://e4cq5a4vfc.execute-api.us-east-1.amazonaws.com/auth-callback',
     // silent_redirect_uri: 'https://dfrmx7er5ggc0.cloudfront.net/silent-refresh.html',
-    silent_redirect_uri: 'http://localhost:4000/silent-refresh.html',
+    // silent_redirect_uri: 'http://localhost:4000/silent-refresh.html',
     // silent_redirect_uri: 'https://e4cq5a4vfc.execute-api.us-east-1.amazonaws.com/silent-refresh.html',
+    silent_redirect_uri: 'https://demo.druidcloud.dev/silent-refresh.html',
     response_type: "code",
     scope:"openid profile aws.cognito.signin.user.admin ads_api/ads_api taxonomy_api/taxonomy_api chat/chat media_api/media_api profiles_api/profiles_api", /*'ads_api media_api chat IdentityServerApi taxonomy_api api_gateway",*/
     filterProtocolClaims: true,

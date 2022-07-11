@@ -65,7 +65,7 @@ export const environment = {
   panelsSettings: {
     openSearchDomain: 'search-classifieds-ui-prod-o5unofrr3c4qb3ykfrxebh2e4a',
     s3Bucket: 'classifieds-ui-prod',
-    objectsRootUrl: '/assets/objects'
+    objectsRootUrl: typeof(window) === 'undefined' ? 'https://rollthecloudinc.github.io/ipe-objects-prod' : '/assets/objects'
   },
   alienaliasSettings: {
     openSearchDomain: 'search-classifieds-ui-prod-o5unofrr3c4qb3ykfrxebh2e4a'

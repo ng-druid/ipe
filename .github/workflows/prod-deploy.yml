@@ -2,7 +2,7 @@ name: Deploy
 on:
   push:
     branches:
-      - masterx
+      - master
 permissions:
   id-token: write
   contents: read

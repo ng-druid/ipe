@@ -4,7 +4,7 @@ This is the first carbonfreed quell built site.
 
 This site serves as both a testing space for regressions and demonstration of available features.
 
-Quell: https://github.com/rollthecloudinc/druid
+Quell: https://github.com/rollthecloudinc/quell
 
 # Testing
 
